@@ -9,18 +9,21 @@ var mqpucker = require('css-mqpacker');
 var assets = require('postcss-assets');
 var fontpath = require('postcss-fontpath');
 var fileinclude = require('gulp-file-include');
+//Server
+var browserSync = require('browser-sync').create();
+var isDevelopment = require('./gulp/util/env');
 //load all plugins that start with "gulp-"
 var $ = require('gulp-load-plugins')();
 
 // Ресурсы проекта
 var paths = {
   dest: 'assets/',
-  styles: 'source/styles/',
+  styles: 'source/sass/',
   css: 'assets/css/',
   scripts: 'source/scripts/',
   libsJS: 'source/libs/',
   js: 'assets/js/',
-  templates: 'templates/',
+  templates: 'source/templates/',
   img: 'source/img/',
   symbols: 'source/img/icons/',
   bundles: 'assets/img/',
@@ -40,7 +43,7 @@ var processors = [
 ];
 
 // Компиляция стилей
-gulp.task('styles', function() {
+gulp.task('sass', function() {
   return (
     gulp
       .src([paths.styles + '**/*.{sass,scss}', '!' + paths.styles + '**/_*.{sass,scss}'])
@@ -48,6 +51,7 @@ gulp.task('styles', function() {
       .pipe($.postcss(processors))
       //.pipe($.csso())
       .pipe(gulp.dest(paths.css))
+      .pipe($.notify('SASS Compiled'))
   );
 });
 
@@ -62,7 +66,7 @@ gulp.task('scripts', function() {
       })
     )
     .pipe($.plumber())
-    .pipe($.concat('scripts.js'))
+    .pipe($.concat('all.js'))
     //.pipe($.uglify())
     .pipe(gulp.dest(paths.js));
 });
@@ -111,8 +115,27 @@ gulp.task('images', function() {
     )
     .pipe(gulp.dest('dist'));
 });
+//Компиляция Pug
+gulp.task('pug', function() {
+  return gulp
+    .src([paths.templates + '*.pug', '!' + paths.templates + '_*.pug'])
+    .pipe($.plumber())
+    .pipe($.pug({ pretty: isDevelopment }))
+    .pipe(gulp.dest(paths.dest))
+    .pipe(browserSync.stream())
+    .pipe($.notify('Pug Compiled'));
+});
 
-//clean all build folder
+//Перезагрузка страницы
+gulp.task('browser-sync', function() {
+  browserSync.init(['css/*.css', 'js/*.js', '*.html'], {
+    server: {
+      baseDir: paths.dest
+    }
+  });
+});
+
+//clean build folder
 gulp.task('cleanBuildDir', function(cb) {
   rimraf(paths.dest, cb);
 });
@@ -131,9 +154,9 @@ gulp.task('watch', function() {
   });
 });
 
-gulp.task('compile', ['styles', 'scripts', 'fonts']);
+gulp.task('compile', ['pug', 'sass', 'scripts', 'fonts']);
 gulp.task('build', function(callback) {
   runSequence('cleanBuildDir', 'compile', callback);
 });
 
-gulp.task('default', ['compile', 'watch']);
+gulp.task('default', ['compile', 'browser-sync', 'watch']);
