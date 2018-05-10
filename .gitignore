@@ -1,0 +1,15 @@
+# Logs
+logs
+*.log
+
+# Dependency directories
+node_modules
+jspm_packages
+# IDE
+.idea
+.vscode
+# Ignore Map Files
+*.map
+# Ignore folders
+assets
+build
