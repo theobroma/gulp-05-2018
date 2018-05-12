@@ -64,6 +64,17 @@ gulp.task('sass', function() {
   );
 });
 
+//Компиляция Pug
+gulp.task('pug', function() {
+  return gulp
+    .src([paths.templates + '*.pug', '!' + paths.templates + '_*.pug'])
+    .pipe($.plumber())
+    .pipe($.pug({ pretty: isDevelopment }))
+    .pipe(gulp.dest(paths.dest))
+    .pipe(browserSync.stream())
+    .pipe($.notify('Pug Compiled'));
+});
+
 // Сборка скриптов
 gulp.task('scripts', function() {
   gulp
@@ -124,16 +135,6 @@ gulp.task('images', function() {
     )
     .pipe(gulp.dest('dist'));
 });
-//Компиляция Pug
-gulp.task('pug', function() {
-  return gulp
-    .src([paths.templates + '*.pug', '!' + paths.templates + '_*.pug'])
-    .pipe($.plumber())
-    .pipe($.pug({ pretty: isDevelopment }))
-    .pipe(gulp.dest(paths.dest))
-    .pipe(browserSync.stream())
-    .pipe($.notify('Pug Compiled'));
-});
 
 //Перезагрузка страницы
 gulp.task('browser-sync', function() {
@@ -162,7 +163,7 @@ gulp.task('cssLint', function() {
 gulp.task('watch', function() {
   gulp.watch(paths.templates + '**/*.pug', ['pug']);
   gulp.watch(paths.fonts_src + '**/*.ttf', ['fonts']);
-  gulp.watch(paths.styles + '**/*.scss', ['styles']);
+  gulp.watch(paths.styles + '**/*.scss', ['sass']);
   gulp.watch(paths.scripts + '**/*.js', ['scripts']);
   gulp.watch(paths.symbols + '*.svg', ['symbols']);
   gulp.watch(paths.img + '*.{png,jpg,gif,svg}', ['img']).on('change', function(event) {
