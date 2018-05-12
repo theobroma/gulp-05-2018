@@ -12,6 +12,13 @@ var fileinclude = require('gulp-file-include');
 //Server
 var browserSync = require('browser-sync').create();
 var isDevelopment = require('./gulp/util/env');
+
+//plugins for testing
+var html5Lint = require('gulp-html5-lint');
+var reporter = require('postcss-reporter');
+var stylelint = require('stylelint');
+var postcss_scss = require('postcss-scss');
+
 //load all plugins that start with "gulp-"
 var $ = require('gulp-load-plugins')();
 
@@ -131,13 +138,23 @@ gulp.task('browser-sync', function() {
   browserSync.init(['css/*.css', 'js/*.js', '*.html'], {
     server: {
       baseDir: paths.dest
-    }
+    },
+    open: 'local',
+    browser: 'chrome'
   });
 });
 
 //clean build folder
 gulp.task('cleanBuildDir', function(cb) {
   rimraf(paths.dest, cb);
+});
+
+gulp.task('cssLint', function() {
+  return gulp.src([paths.styles + '**/*.{sass,scss}']).pipe(
+    $.postcss([stylelint(), reporter({ clearMessages: true })], {
+      syntax: postcss_scss
+    })
+  );
 });
 
 gulp.task('watch', function() {
