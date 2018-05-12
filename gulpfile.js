@@ -54,8 +54,10 @@ gulp.task('sass', function() {
   return (
     gulp
       .src([paths.styles + '**/*.{sass,scss}', '!' + paths.styles + '**/_*.{sass,scss}'])
+      .pipe($.sourcemaps.init())
       .pipe($.sass().on('error', $.sass.logError)) // plumber doesn't work here
       .pipe($.postcss(processors))
+      .pipe($.sourcemaps.write())
       //.pipe($.csso())
       .pipe(gulp.dest(paths.css))
       .pipe($.notify('SASS Compiled'))
