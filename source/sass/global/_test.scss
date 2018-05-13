@@ -1,0 +1,87 @@
+//use this file to test postcss features
+$screen-retina-dpi: 144dpi !default;
+$screen-retina-dpp: 1.5dppx !default;
+//test postcss-assets
+.about__gallery-bg-2 {
+  background-image: resolve('about2.jpg');
+
+  @media (min-resolution: $screen-retina-dpi) and (min-resolution: $screen-retina-dpp) {
+    background-image: resolve('about2_2x.jpg');
+  }
+}
+
+.about__gallery-bg-3 {
+  background-image: resolve('about3.jpg');
+
+  @media (min-resolution: $screen-retina-dpi) and (min-resolution: $screen-retina-dpp) {
+    background-image: resolve('about3_2x.jpg');
+  }
+}
+
+.about__gallery-bg {
+  height: height('about1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+//just simple sass code
+.block1 {
+  & .inner {
+    padding-top: 77px;
+    padding-bottom: 70px;
+  }
+}
+//test autoprefixer
+::placeholder {
+  color: gray;
+}
+
+//test css-mqpacker
+@media (min-width: 768px) {
+  .register-form-inner {
+    height: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .login-form-inner {
+    height: 100%;
+  }
+}
+//test postcss-fontpath
+/* stylelint-disable  property-no-unknown */
+@font-face {
+  font-family: 'Montserrat-Regular';
+  font-path: '../fonts/Montserrat-Regular';
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  font-path: '../fonts/Montserrat-Bold';
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  font-path: '../fonts/Roboto-Regular';
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-LightItalic';
+  font-path: '../fonts/Roboto-LightItalic';
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'KaushanScript-Regular';
+  font-path: '../fonts/KaushanScript-Regular';
+  font-weight: normal;
+  font-style: normal;
+}
+/* stylelint-enable */

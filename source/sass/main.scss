@@ -1,27 +1,3 @@
-@import 'global/_fonts';
-@import 'blocks/_about';
-
-.block1 {
-  & .inner {
-    padding-top: 77px;
-    padding-bottom: 70px;
-  }
-}
-
-::placeholder {
-  color: gray;
-}
-
-//fix form overstepping on small resolution on RegisterPage
-@media (min-width: 768px) {
-  .register-form-inner {
-    height: 100%;
-  }
-}
-
-//fix form overstepping on small resolution on RegisterPage
-@media (min-width: 768px) {
-  .login-form-inner {
-    height: 100%;
-  }
-}
+@import 'global/_test';
+// @import 'global/_fonts';
+// @import 'blocks/_about';
