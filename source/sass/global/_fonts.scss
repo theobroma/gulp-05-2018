@@ -1,4 +1,14 @@
+//main fonts from Google
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,300,700);
+@import url(http://fonts.googleapis.com/css?family=Dosis:300,400,700);
+//Font Awesome from npm
+//https://stackoverflow.com/questions/21406538/how-to-use-font-awesome-icons-from-node-modules
+//if change default fonts dir don't forget to change $fa-font-path to relevant
+//$fa-font-path:"../node_modules/font-awesome/fonts";
+@import '../../node_modules/font-awesome/scss/font-awesome.scss';
+
 /* stylelint-disable  property-no-unknown */
+//local fonts
 @font-face {
   font-family: 'Montserrat-Regular';
   font-path: '../fonts/Montserrat-Regular';
