@@ -100,7 +100,7 @@ gulp.task('ttf2woff', function() {
     .pipe($.ttf2woff())
     .pipe(gulp.dest(paths.fonts_dest));
 });
-// Copy font-awsome from node_modules
+// Copy font-awesome from node_modules
 gulp.task('copy-fa', function() {
   return gulp.src('node_modules/font-awesome/fonts/*.woff').pipe(gulp.dest(paths.fonts_dest));
 });
