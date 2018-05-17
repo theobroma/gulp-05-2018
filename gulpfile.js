@@ -179,6 +179,13 @@ gulp.task('cssLint', function() {
   );
 });
 
+gulp.task('w3c', function() {
+  gulp
+    .src(paths.dest + '*.html')
+    .pipe($.w3cjs())
+    .pipe($.w3cjs.reporter());
+});
+
 gulp.task('watch', function() {
   gulp.watch(paths.templates + '**/*.pug', ['pug']);
   gulp.watch(paths.fonts_src + '**/*.{ttf,woff}', ['fonts']);

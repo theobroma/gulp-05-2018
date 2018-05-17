@@ -1,0 +1,27 @@
+//test postcss-assets
+//change img directory - take images from 'img/test'
+$screen-retina-dpi: 144dpi !default;
+$screen-retina-dpp: 1.5dppx !default;
+
+.about__gallery-bg-2 {
+  background-image: resolve('about2.jpg');
+
+  @media (min-resolution: $screen-retina-dpi) and (min-resolution: $screen-retina-dpp) {
+    background-image: resolve('about2_2x.jpg');
+  }
+}
+
+.about__gallery-bg-3 {
+  background-image: resolve('about3.jpg');
+
+  @media (min-resolution: $screen-retina-dpi) and (min-resolution: $screen-retina-dpp) {
+    background-image: resolve('about3_2x.jpg');
+  }
+}
+
+.about__gallery-bg {
+  height: height('about1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
