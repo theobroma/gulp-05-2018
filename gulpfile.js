@@ -5,10 +5,14 @@ var rimraf = require('rimraf');
 var del = require('del');
 var cache = require('gulp-cached');
 var runSequence = require('run-sequence');
+//postcss
 var autoprefixer = require('autoprefixer');
 var mqpucker = require('css-mqpacker');
 var assets = require('postcss-assets');
 var fontpath = require('postcss-fontpath');
+var customMedia = require('postcss-custom-media');
+var mediaMinmax = require('postcss-media-minmax');
+var flexbugs = require('postcss-flexbugs-fixes');
 var fileinclude = require('gulp-file-include');
 //Server
 var browserSync = require('browser-sync').create();
@@ -47,7 +51,10 @@ var processors = [
   autoprefixer({ browsers: ['last 2 versions'] }),
   mqpucker({ sort: true }),
   fontpath(),
-  assets({ loadPaths: ['assets/img/'], relativeTo: 'assets/css/' })
+  assets({ loadPaths: ['assets/img/'], relativeTo: 'assets/css/' }),
+  customMedia(),
+  mediaMinmax(),
+  flexbugs()
 ];
 
 // Компиляция стилей

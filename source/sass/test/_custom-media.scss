@@ -1,0 +1,27 @@
+/* stylelint-disable*/
+@custom-media --small-viewport (max-width: 30em);
+
+@custom-media --mobile (width <= 768px);
+@custom-media --tablet (width < 970px);
+@custom-media --desktop (width <= 1440px);
+@custom-media --desktop-wide (width >= 1440px);
+@custom-media --mobile-horizontal (height < 400px);
+
+@media (--small-viewport) {
+  /* styles for small viewport */
+  .class {
+    color: red;
+  }
+}
+
+@media (--tablet) {
+  .header {
+    h1 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+}
