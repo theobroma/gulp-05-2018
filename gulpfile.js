@@ -68,6 +68,7 @@ gulp.task('sass', function() {
       .pipe($.sourcemaps.write())
       //.pipe($.csso())
       .pipe(gulp.dest(paths.css))
+      .pipe(browserSync.stream())
       .pipe($.notify('SASS Compiled'))
   );
 });
@@ -96,7 +97,8 @@ gulp.task('scripts', function() {
     .pipe($.plumber())
     .pipe($.concat('all.js'))
     //.pipe($.uglify())
-    .pipe(gulp.dest(paths.js));
+    .pipe(gulp.dest(paths.js))
+    .pipe($.notify('Scripts Compiled'));
 });
 
 // Convert ttf->woff, else just copy woff

@@ -16,14 +16,17 @@ html(lang="en")
         link(rel="stylesheet", href="css/main.css", type="text/css")
       block addhead
   body
-    block header
-      //- include templates/_header
-    main.site-content
-      block content
-    block footer
-      //- include templates/_footer
-      #toTop
-        i(class="fa fa-angle-up" aria-hidden="true")
+    //- block header
+    //-   //- include templates/_header
+    //- main.site-content
+    //-   block content
+    //- block footer
+    //-   //- include templates/_footer
+    //-   #toTop
+    //-     i(class="fa fa-angle-up" aria-hidden="true")
+    block body
+      .layout
+        block container
     block scripts
       //- script(type="text/javascript", src="libs/jquery/jquery-3.2.0.min.js")
       //- script(type="text/javascript", src="libs/bootstrap/bootstrap.min.js")

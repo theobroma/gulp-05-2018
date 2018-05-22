@@ -3,3 +3,16 @@
 @custom-media --desktop (width <= 1440px);
 @custom-media --desktop-wide (width >= 1440px);
 @custom-media --mobile-horizontal (height < 400px);
+
+//example
+// @media (--tablet) {
+//   .header {
+//     h1 {
+//       font-size: 24px;
+//     }
+
+//     p {
+//       font-size: 16px;
+//     }
+//   }
+// }
