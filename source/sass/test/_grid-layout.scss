@@ -1,0 +1,41 @@
+//for testing grid layout
+//use this markup:
+// .container
+//   .header Header
+//   .menu Menu
+//   .content Content
+//   .footer Footer
+.container {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 50px 350px 50px;
+  grid-template-areas: 'h h h h h h h h h h h h' 'm m c c c c c c c c c c' 'f f f f f f f f f f f f';
+}
+
+//move menu to top on small resolution
+@media screen and (--tablet) {
+  .container {
+    grid-template-areas: "m m m m m m h h h h h h" "c c c c c c c c c c c c" "f f f f f f f f f f f f";
+  }
+}
+
+.header {
+  grid-area: h;
+  background-color: #8ee5a6;
+}
+
+.menu {
+  grid-area: m;
+  background-color: #c9c17e;
+}
+
+.content {
+  grid-area: c;
+  background-color: #a0efea;
+}
+
+.footer {
+  grid-area: f;
+  background-color: #c696cc;
+}
