@@ -1,0 +1,65 @@
+- 
+  var serviceListLeft = [
+    {
+      title: "HIGH-END RETOUCHING",
+      icon: "fa-image",
+      text: "Top-rated Upwork professional experienced in retouching, image editing and manipulation."
+    },
+    {
+      title: "GRAPHIC DESIGN",
+      icon: "fa-desktop",
+      text: "Adobe Creative Cloud professional for projects in media products such as apps, websites, magazines, labels, advertising, signage etc."
+    },
+        {
+      title: "PRE-PRINT",
+      icon: "fa-print",
+      text: "Digital pre-press services, 15+ years experience in print layout and production."
+    },
+    {
+      title: "GAME DESIGN",
+      icon: "fa-gamepad",
+      text: "Seven years' experience as a game designer and producer. More than 10 titles released successfully."
+    }
+  ];
+- 
+  var serviceListRight = [
+    {
+      title: "PHOTOGRAPHY",
+      icon: "fa-camera",
+      text: "My strongest point here is product, food, still life, automotive and architectural photography."
+    },
+    {
+      title: "WEB DESIGN",
+      icon: "fa-desktop",
+      text: "Knowledge of CSS, JS, HTML and web page development. Ux / Ui, custom graphics, on-going site maintenance."
+    },
+        {
+      title: "MARKETING",
+      icon: "fa-area-chat",
+      text: "An understanding of the latest trends and their role within a commercial environment."
+    },
+    {
+      title: "SUPPORT",
+      icon: "fa-life-ring",
+      text: "Not only the content creation, but also the constant support to my clients."
+    }
+  ];
+
+
+
+mixin service-card(service)
+  div.service-item
+    .service-icon
+      i.fa(class= service.icon)
+    h2.service-title= service.title
+    =service.text
+
+section#about.block2.tracked
+  .h3.font-alt PROVIDING MY CUSTOMERS WITH THE BEST POSSIBLE DIGITAL SERVICES
+  .section-text Main skills: Adobe Creative Cloud professional (Photoshop CC, Illustrator CC, Dreamweaver CC and Lightroom); Advanced color correction / changing, Background substitution (masking, isolation), Cleaning and polishing (from dust, scratches, fingerprints and any other imperfections), Noise reduction, Sharpening, Tags removal (cut the unwanted elements) and many more for Products, Automotive, Jewelry, Clothing, Underwear, Footwear, Accessories, Furniture, Make-up, Toys, Real Estate, Electronics, Food, Gifts and so forth. 15+ years of experience in retouching and photography, graphic and game design fields. 
+  .service-grid
+    for service in serviceListLeft
+      +service-card(service)
+  .service-grid
+    for service in serviceListRight
+      +service-card(service)    
