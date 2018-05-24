@@ -1,13 +1,34 @@
 //Just for testing
 //@import 'test/_index';
 //@import 'global/_et-line.scss';
-@import 'test/_grid-layout.scss';
+//@import 'test/_grid-layout.scss';
 // ===============================================================
 //actual files
-//@import 'global/_fonts';
+@import 'global/_fonts';
 @import 'global/_viewports';
-//@import 'blocks/_about';
-// .block1 {
-//   display: grid;
-//   grid-template-columns: repeat(4, 1fr);
-// }
+@import 'components/_block1';
+// .img-responsive from Bootstrap is almost the same
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Open Sans", arial, sans-serif;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.font-alt {
+  font-family: Dosis, arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}

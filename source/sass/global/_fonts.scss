@@ -6,42 +6,38 @@
 //if change default fonts dir don't forget to change $fa-font-path to relevant
 //$fa-font-path:"../node_modules/font-awesome/fonts";
 @import '../../node_modules/font-awesome/scss/font-awesome.scss';
-
 //et-line font
 @import './_et-line.scss';
 /* stylelint-disable  property-no-unknown */
+
 //local fonts
-@font-face {
-  font-family: 'Montserrat-Regular';
-  font-path: '../fonts/Montserrat-Regular';
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Montserrat-Bold';
-  font-path: '../fonts/Montserrat-Bold';
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Roboto-Regular';
-  font-path: '../fonts/Roboto-Regular';
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Roboto-LightItalic';
-  font-path: '../fonts/Roboto-LightItalic';
-  font-weight: normal;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'KaushanScript-Regular';
-  font-path: '../fonts/KaushanScript-Regular';
-  font-weight: normal;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: 'Montserrat-Regular';
+//   font-path: '../fonts/Montserrat-Regular';
+//   font-weight: normal;
+//   font-style: normal;
+// }
+// @font-face {
+//   font-family: 'Montserrat-Bold';
+//   font-path: '../fonts/Montserrat-Bold';
+//   font-weight: bold;
+//   font-style: normal;
+// }
+// @font-face {
+//   font-family: 'Roboto-Regular';
+//   font-path: '../fonts/Roboto-Regular';
+//   font-weight: normal;
+//   font-style: normal;
+// }
+// @font-face {
+//   font-family: 'Roboto-LightItalic';
+//   font-path: '../fonts/Roboto-LightItalic';
+//   font-weight: normal;
+//   font-style: italic;
+// }
+// @font-face {
+//   font-family: 'KaushanScript-Regular';
+//   font-path: '../fonts/KaushanScript-Regular';
+//   font-weight: normal;
+//   font-style: normal;
+// }

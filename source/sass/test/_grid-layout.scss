@@ -1,10 +1,14 @@
 //for testing grid layout
+// ===============================================================
 //use this markup:
 // .container
 //   .header Header
 //   .menu Menu
 //   .content Content
 //   .footer Footer
+// ===============================================================
+// for responsive
+// grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 .container {
   display: grid;
   grid-gap: 5px;
