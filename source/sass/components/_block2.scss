@@ -1,0 +1,21 @@
+.block2 {}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(230px, 1fr));
+}
+
+@media (--tablet) {
+  .service-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .service-middle {
+    display: none;
+  }
+}
+
+@media (--mobile) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+}

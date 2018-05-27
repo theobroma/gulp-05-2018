@@ -11,6 +11,18 @@
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
+@media (--tablet) {
+  .b1-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 // .about-photo {
 //   img {
 //     width: 100%;
