@@ -1,0 +1,32 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Open Sans", arial, sans-serif;
+}
+
+// .img-responsive from Bootstrap is almost the same
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.font-alt {
+  font-family: Dosis, arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.section-text {
+  font-size: 15px;
+  font-weight: 300;
+  color: #777;
+  line-height: 1.7;
+}
