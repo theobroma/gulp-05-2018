@@ -54,16 +54,17 @@ mixin service-card(service)
     h2.service-title= service.title
     =service.text
 
-section#about.block2.tracked
-  .h3.font-alt PROVIDING MY CUSTOMERS WITH THE BEST POSSIBLE DIGITAL SERVICES
-  .section-text Main skills: Adobe Creative Cloud professional (Photoshop CC, Illustrator CC, Dreamweaver CC and Lightroom); Advanced color correction / changing, Background substitution (masking, isolation), Cleaning and polishing (from dust, scratches, fingerprints and any other imperfections), Noise reduction, Sharpening, Tags removal (cut the unwanted elements) and many more for Products, Automotive, Jewelry, Clothing, Underwear, Footwear, Accessories, Furniture, Make-up, Toys, Real Estate, Electronics, Food, Gifts and so forth. 15+ years of experience in retouching and photography, graphic and game design fields. 
-  .service-grid
-    .service-left
-      for service in serviceListLeft
-        +service-card(service)
-    .service-middle
-      .service-image
-        img(src="img/retouching-iPad.jpg", alt="")
-    .service-right
-      for service in serviceListRight
-        +service-card(service)
+section#services.block2.tracked
+  .container
+    .h3.font-alt PROVIDING MY CUSTOMERS WITH THE BEST POSSIBLE DIGITAL SERVICES
+    .section-text Main skills: Adobe Creative Cloud professional (Photoshop CC, Illustrator CC, Dreamweaver CC and Lightroom); Advanced color correction / changing, Background substitution (masking, isolation), Cleaning and polishing (from dust, scratches, fingerprints and any other imperfections), Noise reduction, Sharpening, Tags removal (cut the unwanted elements) and many more for Products, Automotive, Jewelry, Clothing, Underwear, Footwear, Accessories, Furniture, Make-up, Toys, Real Estate, Electronics, Food, Gifts and so forth. 15+ years of experience in retouching and photography, graphic and game design fields. 
+    .service-grid
+      .service-left
+        for service in serviceListLeft
+          +service-card(service)
+      .service-middle
+        .service-image
+          img(src="img/retouching-iPad.jpg", alt="")
+      .service-right
+        for service in serviceListRight
+          +service-card(service)
