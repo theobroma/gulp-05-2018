@@ -65,51 +65,57 @@ var processors = [
 ];
 
 // Компиляция стилей
-gulp.task('sass', function () {
-  return gulp
-    .src([paths.styles + '**/*.{sass,scss}', '!' + paths.styles + '**/_*.{sass,scss}'])
-    .pipe($.sourcemaps.init())
-    .pipe($.sass().on('error', $.sass.logError)) // plumber doesn't work here
-    .pipe($.postcss(processors))
-    .pipe($.sourcemaps.write())
-    //.pipe($.csso())
-    .pipe(gulp.dest(paths.css))
-    .pipe(browserSync.stream())
-    .pipe($.notify('SASS Compiled'));
+gulp.task('sass', function() {
+  return (
+    gulp
+      .src([paths.styles + '**/*.{sass,scss}', '!' + paths.styles + '**/_*.{sass,scss}'])
+      .pipe($.sourcemaps.init())
+      .pipe($.sass().on('error', $.sass.logError)) // plumber doesn't work here
+      .pipe($.postcss(processors))
+      .pipe($.sourcemaps.write())
+      //.pipe($.csso())
+      .pipe(gulp.dest(paths.css))
+      .pipe(browserSync.stream())
+      .pipe($.notify('SASS Compiled'))
+  );
 });
 
 //Компиляция Pug
-gulp.task('pug', function () {
+gulp.task('pug', function() {
   return gulp
     .src([paths.templates + '*.pug', '!' + paths.templates + '_*.pug'])
     .pipe($.plumber())
-    .pipe($.pug({
-      pretty: isDevelopment
-    }))
+    .pipe(
+      $.pug({
+        pretty: isDevelopment
+      })
+    )
     .pipe(gulp.dest(paths.dest))
     .pipe(browserSync.stream())
     .pipe($.notify('Pug Compiled'));
 });
 
 // Сборка скриптов
-gulp.task('scripts', function () {
-  return gulp
-    .src(paths.scripts + '*.js')
-    .pipe(
-      fileinclude({
-        prefix: '@@',
-        basepath: '@file'
-      })
-    )
-    .pipe($.plumber())
-    .pipe($.concat('all.js'))
-    //.pipe($.uglify())
-    .pipe(gulp.dest(paths.js))
-    .pipe($.notify('Scripts Compiled'));
+gulp.task('scripts', function() {
+  return (
+    gulp
+      .src(paths.scripts + 'all.js')
+      .pipe(
+        fileinclude({
+          prefix: '@@',
+          basepath: '@file'
+        })
+      )
+      .pipe($.plumber())
+      .pipe($.concat('all.js'))
+      //.pipe($.uglify())
+      .pipe(gulp.dest(paths.js))
+      .pipe($.notify('Scripts Compiled'))
+  );
 });
 
 // Convert ttf->woff, else just copy woff
-gulp.task('ttf2woff', function () {
+gulp.task('ttf2woff', function() {
   return gulp
     .src(paths.fonts_src + '*.{ttf,woff}')
     .pipe($.plumber())
@@ -117,12 +123,12 @@ gulp.task('ttf2woff', function () {
     .pipe(gulp.dest(paths.fonts_dest));
 });
 // Copy font-awesome from node_modules
-gulp.task('copy-fa', function () {
+gulp.task('copy-fa', function() {
   return gulp.src('node_modules/font-awesome/fonts/*.woff').pipe(gulp.dest(paths.fonts_dest));
 });
 
 // Сжатие картинок
-gulp.task('imagemin', function () {
+gulp.task('imagemin', function() {
   return gulp
     .src(paths.img + '*.{png,jpg,gif,svg}')
     .pipe(cache('img'))
@@ -172,7 +178,7 @@ gulp.task('imagemin', function () {
 // });
 
 //Перезагрузка страницы
-gulp.task('browser-sync', function () {
+gulp.task('browser-sync', function() {
   browserSync.init(['css/*.css', 'js/*.js', '*.html'], {
     server: {
       baseDir: paths.dest
@@ -183,34 +189,40 @@ gulp.task('browser-sync', function () {
 });
 
 //clean build folder
-gulp.task('cleanBuildDir', function (cb) {
+gulp.task('cleanBuildDir', function(cb) {
   rimraf(paths.dest, cb);
 });
 
-gulp.task('cssLint', function () {
+gulp.task('cssLint', function() {
   return gulp.src([paths.styles + '**/*.{sass,scss}']).pipe(
-    $.postcss([stylelint(), reporter({
-      clearMessages: true
-    })], {
-      syntax: postcss_scss
-    })
+    $.postcss(
+      [
+        stylelint(),
+        reporter({
+          clearMessages: true
+        })
+      ],
+      {
+        syntax: postcss_scss
+      }
+    )
   );
 });
 
-gulp.task('w3c', function () {
+gulp.task('w3c', function() {
   return gulp
     .src(paths.dest + '*.html')
     .pipe($.w3cjs())
     .pipe($.w3cjs.reporter());
 });
 //FIXME:imagemin error
-gulp.task('watch', function () {
+gulp.task('watch', function() {
   gulp.watch(paths.templates + '**/*.pug', ['pug']);
   gulp.watch(paths.fonts_src + '**/*.{ttf,woff}', ['fonts']);
   gulp.watch(paths.styles + '**/*.scss', ['sass']);
   gulp.watch(paths.scripts + '**/*.js', ['scripts']);
   gulp.watch(paths.symbols + '*.svg', ['symbols']);
-  gulp.watch(paths.img + '*.{png,jpg,gif,svg}', ['imagemin']).on('change', function (event) {
+  gulp.watch(paths.img + '*.{png,jpg,gif,svg}', ['imagemin']).on('change', function(event) {
     if (event.type === 'deleted') {
       del(paths.bundles + path.basename(event.path));
       delete cache.caches['imagemin'][event.path];
@@ -220,10 +232,10 @@ gulp.task('watch', function () {
 
 gulp.task('fonts', ['copy-fa', 'ttf2woff']);
 gulp.task('compile', ['pug', 'sass', 'scripts', 'fonts', 'imagemin']);
-gulp.task('build', function (callback) {
+gulp.task('build', function(callback) {
   runSequence('cleanBuildDir', 'compile', callback);
 });
 gulp.task('dev', ['compile', 'browser-sync', 'watch']);
-gulp.task('default', function (callback) {
+gulp.task('default', function(callback) {
   runSequence('cleanBuildDir', 'dev', callback);
 });

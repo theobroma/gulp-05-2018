@@ -1,4 +1,4 @@
-@@include('../../node_modules/jquery/dist/jquery.min.js')
+//@@include('../../node_modules/jquery/dist/jquery.min.js')
 
 // $(document).ready(function () {
 // 	//Animation all blocks
@@ -23,7 +23,6 @@
 // 	onScrollInit( $('.os-animation') );
 // 	onScrollInit( $('.staggered-animation'), $('.staggered-animation-container') );
 
-
 // 	//Button down
 // 	$(".intro__button-down").click(function() {
 // 		$("html, body").animate({ scrollTop: $(".main-header").height()+10}, "slow");
@@ -47,8 +46,8 @@
 // 	});
 
 // 	//Open map
-// 	$('.map__open').magnificPopup({ 
-// 		type: 'iframe' 
+// 	$('.map__open').magnificPopup({
+// 		type: 'iframe'
 // 	});
 
 // 	//Carousel
@@ -65,7 +64,6 @@
 // 		dotsSpeed : 600,
 // 		dragEndSpeed : 600,
 // 	});
-
 
 // 	//Button-Up
 // 	$(".footer__button-up").click(function() {
