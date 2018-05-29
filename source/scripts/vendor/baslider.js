@@ -7,7 +7,6 @@
         var afterImage = $('img:last', baContainer);
         afterImageH = afterImage.height();
         afterImageW = afterImage.width();
-
         $(baContainer).height(afterImageH);
 
         $('img:first', baContainer)
@@ -111,7 +110,6 @@
         }
         function resizeHandler() {
           afterImageH = afterImage.height();
-          console.log(afterImageH);
           afterImageW = afterImage.width();
           $('.ba-slider', baContainer).height(afterImageH);
           $('.ba-control', baContainer).height(afterImageH);

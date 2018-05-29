@@ -1,4 +1,10 @@
-//@@include('../../node_modules/jquery/dist/jquery.min.js')
+@@include('../../node_modules/jquery/dist/jquery.min.js')
+@@include('./vendor/baslider.js')
+
+window.onload = function () {
+  $('.ba-slider').beforeAfter();
+}
+// 123123124124
 
 // $(document).ready(function () {
 // 	//Animation all blocks
