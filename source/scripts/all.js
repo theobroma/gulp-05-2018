@@ -4,11 +4,18 @@
 @@include('./vendor/jquery.localScroll.min.js')
 @@include('./vendor/jquery.scrollTo.js')
 @@include('./vendor/jquery.easing.js')
+@@include('./vendor/jquery.viewport.mini.js')
+@@include('./vendor/imagesloaded.pkgd.js')
 
 window.onload = function () {
   $('.ba-slider').beforeAfter();
-}
 
+  $("body").imagesLoaded(function(){
+    $(".page-loader div").fadeOut();
+    $(".page-loader").delay(200).fadeOut("slow");
+  });
+
+}
 $(document).ready(function(){
   $(window).trigger("resize");
   init_parallax();
@@ -26,6 +33,19 @@ $(document).ready(function(){
       duration: 1500,
       offset: 0,
       easing: "easeInOutExpo"
+  });
+
+  var sections = $(".home-section, .split-section, .page-section");
+  var menu_links = $(".scroll-nav li a");
+
+  $(window).scroll(function(){
+
+      sections.filter(":in-viewport:first").each(function(){
+          var active_section = $(this);
+          var active_link = $('.scroll-nav li a[href="#' + active_section.attr("id") + '"]');
+          menu_links.removeClass("active");
+          active_link.addClass("active");
+      });
   });
 }
 
