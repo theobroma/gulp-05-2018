@@ -1,26 +1,26 @@
 .block1 {
-  text-align: justify;
-  font-size: 15px;
-  font-weight: 300;
-  color: #777;
-  line-height: 1.7;
+    text-align: justify;
+    font-size: 15px;
+    font-weight: 300;
+    color: #777;
+    line-height: 1.7;
 }
 
 .b1-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
 @media (--tablet) {
-  .b1-grid {
-    grid-template-columns: 1fr;
-  }
+    .b1-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .about-photo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 // .about-photo {

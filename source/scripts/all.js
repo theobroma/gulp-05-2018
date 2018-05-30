@@ -1,6 +1,9 @@
 @@include('../../node_modules/jquery/dist/jquery.min.js')
 @@include('./vendor/baslider.js')
 @@include('./vendor/jquery.parallax-1.1.3.js')
+@@include('./vendor/jquery.localScroll.min.js')
+@@include('./vendor/jquery.scrollTo.js')
+@@include('./vendor/jquery.easing.js')
 
 window.onload = function () {
   $('.ba-slider').beforeAfter();
@@ -9,7 +12,22 @@ window.onload = function () {
 $(document).ready(function(){
   $(window).trigger("resize");
   init_parallax();
+  init_scroll_navigate();
 });
+
+/* ---------------------------------------------
+  Scroll navigation
+  --------------------------------------------- */
+
+  function init_scroll_navigate(){
+
+  $(".local-scroll").localScroll({
+      target: "body",
+      duration: 1500,
+      offset: 0,
+      easing: "easeInOutExpo"
+  });
+}
 
 /* ---------------------------------------------
   Sections helpers
