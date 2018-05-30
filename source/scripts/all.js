@@ -1,79 +1,82 @@
 @@include('../../node_modules/jquery/dist/jquery.min.js')
 @@include('./vendor/baslider.js')
+@@include('./vendor/jquery.parallax-1.1.3.js')
 
 window.onload = function () {
   $('.ba-slider').beforeAfter();
 }
-// 123123124124
 
-// $(document).ready(function () {
-// 	//Animation all blocks
-// 	function onScrollInit( items, trigger ) {
-// 		items.each( function() {
-// 			var osElement = $(this),
-// 				osAnimationClass = osElement.attr('data-os-animation'),
-// 				osAnimationDelay = osElement.attr('data-os-animation-delay');
-// 				osElement.css({
-// 					'animation-delay': osAnimationDelay
-// 				});
-// 			var osTrigger = ( trigger ) ? trigger : osElement;
-// 			osTrigger.waypoint(function() {
-// 				osElement.addClass('animated').addClass(osAnimationClass);
-// 				},{
-// 					triggerOnce: true,
-// 					offset: '90%'
-// 			});
-// 		});
-// 	}
+$(document).ready(function(){
+  $(window).trigger("resize");
+  init_parallax();
+});
 
-// 	onScrollInit( $('.os-animation') );
-// 	onScrollInit( $('.staggered-animation'), $('.staggered-animation-container') );
+/* ---------------------------------------------
+  Sections helpers
+  --------------------------------------------- */
 
-// 	//Button down
-// 	$(".intro__button-down").click(function() {
-// 		$("html, body").animate({ scrollTop: $(".main-header").height()+10}, "slow");
-// 		return false;
-// 	});
+// Sections backgrounds
 
-// 	//Jquery Accordion
-// 	var icons = {
-// 		header: "arrow-down",
-// 		activeHeader: "arrow-up"
-// 		};
-// 		$( "#accordion" ).accordion({
-// 			icons: icons,
-// 			heightStyle: "content",
-// 	});
+var pageSection = $(".home-section, .page-section, .small-section, .split-section");
+pageSection.each(function(indx){
 
-// 	//Toggle menu
-// 	$(".hamburger").on("click", function(){
-// 		$(".main-nav__list").slideToggle();
-// 		$(this).toggleClass("is-active");
-// 	});
+    if ($(this).attr("data-background")){
+        $(this).css("background-image", "url(" + $(this).data("background") + ")");
+    }
+});
 
-// 	//Open map
-// 	$('.map__open').magnificPopup({
-// 		type: 'iframe'
-// 	});
+/* -------------------------------------------
+  Parallax
+  --------------------------------------------- */
 
-// 	//Carousel
-// 	$('.owl-carousel').owlCarousel({
-// 		items : 1,
-// 		nav : true,
-// 		navText : "",
-// 		loop : true,
-// 		autoplay : true,
-// 		autoplayHoverPause : true,
-// 		fluidSpeed : 600,
-// 		autoplaySpeed : 600,
-// 		navSpeed : 600,
-// 		dotsSpeed : 600,
-// 		dragEndSpeed : 600,
-// 	});
+  function init_parallax(){
 
-// 	//Button-Up
-// 	$(".footer__button-up").click(function() {
-// 		$("html, body").animate({ scrollTop: 0 }, "slow");
-// 		return false;
-// 	});
-// })
+  // Parallax
+  if (($(window).width() >= 1024) && (mobileTest == false)) {
+      $(".parallax-1").parallax("50%", 0.1);
+      $(".parallax-2").parallax("50%", 0.2);
+      $(".parallax-3").parallax("50%", 0.3);
+      $(".parallax-4").parallax("50%", 0.4);
+      $(".parallax-5").parallax("50%", 0.5);
+      $(".parallax-6").parallax("50%", 0.6);
+      $(".parallax-7").parallax("50%", 0.7);
+      $(".parallax-8").parallax("50%", 0.5);
+      $(".parallax-9").parallax("50%", 0.5);
+      $(".parallax-10").parallax("50%", 0.5);
+      $(".parallax-11").parallax("50%", 0.05);
+  }
+
+}
+
+/* --------------------------------------------
+     Platform detect
+     --------------------------------------------- */
+     var mobileTest;
+     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+         mobileTest = true;
+         $("html").addClass("mobile");
+     }
+     else {
+         mobileTest = false;
+         $("html").addClass("no-mobile");
+     }
+
+     var mozillaTest;
+     if (/mozilla/.test(navigator.userAgent)) {
+         mozillaTest = true;
+     }
+     else {
+         mozillaTest = false;
+     }
+     var safariTest;
+     if (/safari/.test(navigator.userAgent)) {
+         safariTest = true;
+     }
+     else {
+         safariTest = false;
+     }
+
+     // Detect touch devices
+     if (!("ontouchstart" in document.documentElement)) {
+         document.documentElement.className += " no-touch";
+     }
